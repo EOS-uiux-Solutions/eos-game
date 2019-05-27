@@ -1,43 +1,38 @@
-class Player {
+class Obstacle {
   constructor(args) {
     this.xpos = args.x
     this.ypos = args.y
     this.w = args.w
     this.h = args.h
+    /* Push obstacles to world. */
     args.layer.childrens.push(this)
-
 
     this.state = args.initState
 
     this.visible = true
     this.updateCheck = args.updateCheck
+    this.direction = 2;
   }
 
   show() {
     if(!this.visible) return
-    noFill()
     noStroke()
-    ellipse(this.xpos, this.ypos, this.w, this.h)
+    noFill(this.color)
+    rect(this.xpos, this.ypos, this.w, this.h)
   }
 
   update() {
     if(!this.updateCheck) return
     this[this.state]()
-    playerSprite.position.x = this.xpos
-    playerSprite.position.y = this.ypos
+    obstacleSprite.position.x = this.xpos
+    obstacleSprite.position.y = this.ypos
   }
 
   idleState() {
-    // console.log('player is idle')
+
   }
 
   moveState() {
-    // console.log('player is moving')
-    this.xpos = mouseX
-    this.ypos = mouseY
-  }
-
-  jumpState() {
-    this.ypos++
+    this.xpos = this.xpos - 1
   }
 }
