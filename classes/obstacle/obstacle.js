@@ -33,6 +33,6 @@ class Obstacle {
   }
 
   moveState() {
-    this.xpos = this.xpos - 1
+    this.xpos = this.xpos - 0.1
   }
 }

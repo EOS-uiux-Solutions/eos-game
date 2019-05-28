@@ -24,6 +24,7 @@ function setup() {
   playerSprite = createSprite(200, 200);
   playerSprite.addAnimation('normal', './assets/img/player/asterisk_normal0001.png', './assets/img/player/asterisk_normal0003.png');
   playerSprite.addAnimation('round', './assets/img/player/asterisk_circle0006.png', './assets/img/player/asterisk_circle0008.png');
+  playerSprite.scale = 0.5
 
   /* ==========================================================================
      Obstacle
@@ -32,8 +33,13 @@ function setup() {
   /* Obstacle sprite */
   obstacleSprite = createSprite(obstacle.x, obstacle.y);
   obstacleSprite.addAnimation('normal', './assets/img/obstacle/box0001.png', './assets/img/obstacle/box0003.png');
+  obstacleSprite.scale = 0.5
 
-  console.log('obstacleSprite: ', obstacleSprite);
+
+  /* DEBUG
+  ========================================================================== */
+  const el = playerSprite.getBoundingBox()
+  console.log('el: ', el);
 }
 
 function draw() {
@@ -58,7 +64,7 @@ const update = args => {
 
 /* After pos update */
 const lateUpdate = args => {
-  if (playerSprite.collide(obstacleSprite)) {
+  if (playerSprite.overlap(obstacleSprite)) {
       playerSprite.changeAnimation('round')
       noLoop()
   } else {
@@ -69,6 +75,8 @@ const lateUpdate = args => {
 /* Render elements */
 const render = args => {
   world.show()
+  playerSprite.debug  = mouseIsPressed
+  obstacleSprite.debug  = mouseIsPressed
 }
 
 /* Render static assets */
@@ -83,6 +91,7 @@ const staticRender = args => {
 // function keyPressed() {
 //   if(!key === ' ') return
 //   player.state = 'moveState'
+//   obstacle.state = 'moveState'
 // }
 
 // function keyReleased() {
