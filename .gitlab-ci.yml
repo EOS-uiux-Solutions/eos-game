@@ -12,3 +12,4 @@ pages:
     - public # mandatory, other folder won't work
   only:
   - master # or dev, the branch you want to publish
+  - Leaderboard-scaffolding
