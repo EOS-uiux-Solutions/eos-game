@@ -1,4 +1,4 @@
-image: node:10.15.0 # can be upgraded, depending on your node version used
+image: node:10.16.0 # can be upgraded, depending on your node version used
 
 pages:
   stage: deploy
@@ -12,4 +12,4 @@ pages:
     - public # mandatory, other folder won't work
   only:
   # - master # or dev, the branch you want to publish
-  - Leaderboard-scaffolding
+  - Leaderboard-scaffolding|
