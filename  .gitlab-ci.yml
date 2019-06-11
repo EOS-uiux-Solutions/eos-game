@@ -1,0 +1,21 @@
+stages:
+  - pages
+
+image: node:10.15.0
+
+
+pages:
+  stage: pages
+  script:
+    - npm install
+    - mkdir .public
+    - cp -r */** .public
+    - mv .public public/
+  environment:
+    name: production
+  artifacts:
+    paths:
+      - public
+  only:
+    - ops/p5js-play-test
+  when: manual
