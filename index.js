@@ -24,22 +24,29 @@ function setup() {
   playerSprite = createSprite(200, 200);
   playerSprite.addAnimation('normal', './assets/img/player/asterisk_normal0001.png', './assets/img/player/asterisk_normal0003.png');
   playerSprite.addAnimation('round', './assets/img/player/asterisk_circle0006.png', './assets/img/player/asterisk_circle0008.png');
-  playerSprite.scale = 0.5
+  playerSprite.scale = 1
 
   /* ==========================================================================
      Obstacle
     ========================================================================== */
-  obstacle = new Obstacle({ x: 500, y: width / 2, w: 20, h: 20, updateCheck: true, layer: world, initState: 'moveState' })
+  obstacle = new Obstacle({
+    x: 500,
+    y: width / 2,
+    w: 20,
+    h: 20,
+    updateCheck: true,
+    layer: world,
+    initState: 'moveState'
+  })
+
   /* Obstacle sprite */
   obstacleSprite = createSprite(obstacle.x, obstacle.y);
   obstacleSprite.addAnimation('normal', './assets/img/obstacle/box0001.png', './assets/img/obstacle/box0003.png');
-  obstacleSprite.scale = 0.5
-
+  obstacleSprite.scale = 1
 
   /* DEBUG
   ========================================================================== */
-  const el = playerSprite.getBoundingBox()
-  console.log('el: ', el);
+  // console.log('playerSprite: ', playerSprite.getBoundingBox());
 }
 
 function draw() {
