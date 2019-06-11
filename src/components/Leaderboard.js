@@ -4,7 +4,7 @@ import MonthlyTop from './MonthlyTop';
 
 export default function Leaderboard() {
   return (
-    <div class="leaderboard">
+    <div className="leaderboard">
       <AllTimeTop />
       <MonthlyTop />
     </div>
