@@ -1,0 +1,65 @@
+#root {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(207, 204, 204);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 900px;
+  height: 700px;
+  margin: 25px 0 25px 0;
+  padding: 0;
+  background-color: white;
+  border-radius: 4px;
+}
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  height: 55%;
+  margin: 15px 20px 0 20px;
+}
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  height: 45%;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  margin: 0 20px 0 20px;
+  padding-top: 15px;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.row h3 {
+  font-size: 14px;
+}
+.all-time {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+.list-group {
+  padding: 10px;
+}
+#user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.monthly {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+
+}
+.btn-more {
+  font-size: 12px;
+  align-self: center;
+}

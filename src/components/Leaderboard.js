@@ -5,8 +5,11 @@ import MonthlyTop from './MonthlyTop';
 export default function Leaderboard() {
   return (
     <div className="leaderboard">
-      <AllTimeTop />
-      <MonthlyTop />
+      <div className="row">
+        <AllTimeTop />
+        <MonthlyTop />
+      </div>
+      <h3 className="btn-more">show more</h3>
     </div>
   )
 }
