@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Game from './components/Game';
 import Leaderboard from './components/Leaderboard';
@@ -6,15 +6,21 @@ import Leaderboard from './components/Leaderboard';
 function App() {
 
   const info = require('./players.json');
-  const [count, setCount] = useState(info);
+  const [leaders, setLeaders] = useState(info);
 
-  console.log(count);
+  //There is a warning showed in console about 'setLeaders', I will use that later for update the local state. 
+  useEffect(() => {
+    //I will use this hook later, do not delete it!
+    // console.log(leaders.topScore.allTime);
+    // console.log(leaders.topScore.lastMonth);
+
+  });
 
 
   return (
     <div className="container">
       <Game />
-      <Leaderboard />
+      <Leaderboard leaders={leaders}/>
     </div>
   );
 }

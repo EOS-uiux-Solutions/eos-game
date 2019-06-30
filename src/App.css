@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   background-color: rgb(207, 204, 204);
+  height: 100vh;
 }
 .container {
   display: flex;
@@ -26,16 +27,18 @@
 .leaderboard {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 45%;
+  margin: 0 20px 15px 20px;
 }
 .row {
   display: flex;
   flex-direction: row;
   height: 90%;
-  margin: 0 20px 0 20px;
+  width: 100%;
   padding-top: 15px;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 14px;
 }
 .row h3 {
   font-size: 14px;
@@ -45,21 +48,13 @@
   flex-direction: column;
   width: 48%;
 }
-.list-group {
-  padding: 10px;
-}
 #user {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.monthly {
-  display: flex;
-  flex-direction: column;
-  width: 48%;
-
-}
 .btn-more {
   font-size: 12px;
   align-self: center;
+  margin: 0;
 }
