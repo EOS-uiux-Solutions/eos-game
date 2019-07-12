@@ -17,15 +17,16 @@ class Obstacle {
   show() {
     if(!this.visible) return
     noStroke()
-    noFill(this.color)
+    // noFill(this.color)
+    fill(255)
     rect(this.xpos, this.ypos, this.w, this.h)
   }
 
   update() {
     if(!this.updateCheck) return
     this[this.state]()
-    obstacleSprite.position.x = this.xpos
-    obstacleSprite.position.y = this.ypos
+    // obstacleSprite.position.x = this.xpos
+    // obstacleSprite.position.y = this.ypos
   }
 
   idleState() {
@@ -33,6 +34,12 @@ class Obstacle {
   }
 
   moveState() {
-    this.xpos = this.xpos - 0.4
+    this.xpos = this.xpos - 4
+  }
+
+  createObstacleSprite() {
+    const sprite = createSprite(this.xpos, this.ypos);
+    sprite.addAnimation('normal', '../../img/obstacle/box0001.png', '../../img/obstacle/box0003.png');
+    obstacleSprite.scale = 1
   }
 }

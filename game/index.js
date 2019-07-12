@@ -1,9 +1,11 @@
-let world, player, obstacle, playerSprite, obstacleSprite
+let world, player, obstacle, playerSprite, obstaclesArr
+
+obstaclesArr = []
 
 function setup() {
   createCanvas(640, 480);
 
-  /* Ground */
+  /* World definition */
   world = new World()
 
   /* ==========================================================================
@@ -29,24 +31,16 @@ function setup() {
   /* ==========================================================================
      Obstacle
     ========================================================================== */
-  obstacle = new Obstacle({
-    x: 500,
-    y: width / 2,
-    w: 20,
-    h: 20,
-    updateCheck: true,
-    layer: world,
-    initState: 'moveState'
-  })
-
-  /* Obstacle sprite */
-  obstacleSprite = createSprite(obstacle.x, obstacle.y);
-  obstacleSprite.addAnimation('normal', './assets/img/obstacle/box0001.png', './assets/img/obstacle/box0003.png');
-  obstacleSprite.scale = 1
 
   /* DEBUG
   ========================================================================== */
   // console.log('playerSprite: ', playerSprite.getBoundingBox());
+}
+
+const createObstacleSprite = args => {
+  obstacleSprite = createSprite(obstacle.x, obstacle.y);
+  obstacleSprite.addAnimation('normal', './assets/img/obstacle/box0001.png', './assets/img/obstacle/box0003.png');
+  obstacleSprite.scale = 1
 }
 
 function draw() {
@@ -66,24 +60,27 @@ const fixUpdate = args => {
 /* Game logic */
 const update = args => {
   world.update()
+
   drawSprites()
+
+  generateObstacles()
 }
 
 /* After pos update */
 const lateUpdate = args => {
-  if (playerSprite.overlap(obstacleSprite)) {
-      playerSprite.changeAnimation('round')
-      noLoop()
-  } else {
-    playerSprite.changeAnimation('normal');
-  }
+  // if (playerSprite.overlap(obstacleSprite)) {
+  //     playerSprite.changeAnimation('round')
+  //     noLoop()
+  // } else {
+  //   playerSprite.changeAnimation('normal');
+  // }
 }
 
 /* Render elements */
 const render = args => {
   world.show()
   playerSprite.debug  = mouseIsPressed
-  obstacleSprite.debug  = mouseIsPressed
+  // obstacleSprite.debug  = mouseIsPressed
 }
 
 /* Render static assets */
@@ -92,6 +89,25 @@ const staticRender = args => {
 }
 
 
+
+const generateObstacles = () => {
+  /* Clear elements from array for performance */
+  if (obstaclesArr.length > 5) {
+    obstaclesArr.pop();
+  }
+
+  if (frameCount % 90 == 0) {
+    obstaclesArr.push(new Obstacle({
+      x: 900,
+      y: width / 2,
+      w: 20,
+      h: 20,
+      updateCheck: true,
+      layer: world,
+      initState: 'moveState'
+    }));
+  }
+}
 /* ==========================================================================
   Player controller, jump functionality
   ========================================================================== */
