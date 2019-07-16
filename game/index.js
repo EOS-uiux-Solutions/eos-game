@@ -1,5 +1,4 @@
-let world, player, obstacle, playerSprite, obstaclesArr
-
+let world, player, obstacle, playerSprite, obstaclesArr, initSpeed = 5, score = 0
 obstaclesArr = []
 
 function setup() {
@@ -28,20 +27,11 @@ function setup() {
   playerSprite.addAnimation('round', './assets/img/player/asterisk_circle0006.png', './assets/img/player/asterisk_circle0008.png');
   playerSprite.scale = 1
 
-  /* ==========================================================================
-     Obstacle
-    ========================================================================== */
-
   /* DEBUG
   ========================================================================== */
   // console.log('playerSprite: ', playerSprite.getBoundingBox());
 }
 
-const createObstacleSprite = args => {
-  obstacleSprite = createSprite(obstacle.x, obstacle.y);
-  obstacleSprite.addAnimation('normal', './assets/img/obstacle/box0001.png', './assets/img/obstacle/box0003.png');
-  obstacleSprite.scale = 1
-}
 
 function draw() {
   /* "ENGINE" */
@@ -61,19 +51,25 @@ const fixUpdate = args => {
 const update = args => {
   world.update()
 
-  drawSprites()
+  /* Update the obstacle speed over time */
+  initSpeed = initSpeed + 0.005
 
+  drawSprites()
   generateObstacles()
 }
 
 /* After pos update */
 const lateUpdate = args => {
-  // if (playerSprite.overlap(obstacleSprite)) {
-  //     playerSprite.changeAnimation('round')
-  //     noLoop()
-  // } else {
-  //   playerSprite.changeAnimation('normal');
-  // }
+  /* Screen score */
+  fill(255)
+  text(`Score: ${Math.round(score = score + 0.1)} `, 10, 30);
+
+  /* Check if ther's a collision between player and any obstacle in the array */
+  obstaclesArr.forEach(element => {
+    if (playerSprite.overlap(element.obstacle)) {
+      noLoop()
+    }
+  });
 }
 
 /* Render elements */
@@ -88,11 +84,10 @@ const staticRender = args => {
   background(0)
 }
 
-
-
+/* Function that adds obstacles into map and also makes sure we clear the array for performance */
 const generateObstacles = () => {
   /* Clear elements from array for performance */
-  if (obstaclesArr.length > 5) {
+  if (obstaclesArr.length < 1) {
     obstaclesArr.pop();
   }
 
@@ -104,10 +99,12 @@ const generateObstacles = () => {
       h: 20,
       updateCheck: true,
       layer: world,
-      initState: 'moveState'
+      initState: 'moveState',
+      speed: initSpeed,
     }));
   }
 }
+
 /* ==========================================================================
   Player controller, jump functionality
   ========================================================================== */

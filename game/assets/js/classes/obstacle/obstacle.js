@@ -4,6 +4,7 @@ class Obstacle {
     this.ypos = args.y
     this.w = args.w
     this.h = args.h
+    this.speed = args.speed
     /* Push obstacles to world. */
     args.layer.childrens.push(this)
 
@@ -11,7 +12,8 @@ class Obstacle {
 
     this.visible = true
     this.updateCheck = args.updateCheck
-    this.direction = 2;
+    // this.direction = 2;
+    this.obstacle = createSprite(this.xpos, this.ypos);
   }
 
   show() {
@@ -25,8 +27,8 @@ class Obstacle {
   update() {
     if(!this.updateCheck) return
     this[this.state]()
-    // obstacleSprite.position.x = this.xpos
-    // obstacleSprite.position.y = this.ypos
+    this.obstacle.position.x = this.xpos
+    this.obstacle.position.y = this.ypos
   }
 
   idleState() {
@@ -34,12 +36,11 @@ class Obstacle {
   }
 
   moveState() {
-    this.xpos = this.xpos - 4
+    this.xpos = this.xpos - this.speed
   }
 
   createObstacleSprite() {
-    const sprite = createSprite(this.xpos, this.ypos);
-    sprite.addAnimation('normal', '../../img/obstacle/box0001.png', '../../img/obstacle/box0003.png');
+    this.obstacle.addAnimation('normal', '../../img/obstacle/box0001.png', '../../img/obstacle/box0003.png');
     obstacleSprite.scale = 1
   }
 }
