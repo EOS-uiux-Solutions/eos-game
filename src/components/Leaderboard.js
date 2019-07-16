@@ -2,8 +2,8 @@ import React from 'react';
 import TopPlayers from './TopPlayers';
 
 export default function Leaderboard(props) {
-  const allTime = props.leaders.topScore.allTime;
-  const lastMonth = props.leaders.topScore.lastMonth;
+  const { allTime, lastMonth } = props.leaders.topScore;
+  
   return (
     <div className="leaderboard">
       <div className="row">

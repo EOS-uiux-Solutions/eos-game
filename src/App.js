@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+
 import './App.css';
 import Game from './components/Game';
 import Leaderboard from './components/Leaderboard';
 
+const info = require('./players.json');
+
 function App() {
 
-  const info = require('./players.json');
   const [leaders, setLeaders] = useState(info);
 
   //There is a warning showed in console about 'setLeaders', I will use that later for update the local state. 
