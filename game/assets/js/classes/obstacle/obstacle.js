@@ -5,15 +5,12 @@ class Obstacle {
     this.w = args.w
     this.h = args.h
     this.speed = args.speed
-    /* Push obstacles to world. */
-    args.layer.childrens.push(this)
-
     this.state = args.initState
-
     this.visible = true
     this.updateCheck = args.updateCheck
-    // this.direction = 2;
     this.obstacle = createSprite(this.xpos, this.ypos);
+    /* Push obstacles to world. */
+    args.layer.childrens.push(this)
   }
 
   show() {
@@ -41,6 +38,6 @@ class Obstacle {
 
   createObstacleSprite() {
     this.obstacle.addAnimation('normal', '../../img/obstacle/box0001.png', '../../img/obstacle/box0003.png');
-    obstacleSprite.scale = 1
+    this.obstacle.scale = 10
   }
 }

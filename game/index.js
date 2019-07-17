@@ -1,4 +1,4 @@
-let world, player, obstacle, playerSprite, obstaclesArr, initSpeed = 5, score = 0
+t world, player, obstacle, playerSprite, obstaclesArr, initSpeed = 5, score = 0
 obstaclesArr = []
 
 function setup() {
