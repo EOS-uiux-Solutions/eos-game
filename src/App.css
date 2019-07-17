@@ -1,33 +1,60 @@
-.App {
-  text-align: center;
+#root {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(207, 204, 204);
+  height: 100vh;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 900px;
+  height: 700px;
+  margin: 25px 0 25px 0;
+  padding: 0;
+  background-color: white;
+  border-radius: 4px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  height: 55%;
+  margin: 15px 20px 0 20px;
+}
+.leaderboard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 45%;
+  margin: 0 20px 15px 20px;
 }
-
-.App-link {
-  color: #61dafb;
+.row {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  width: 100%;
+  padding-top: 15px;
+  justify-content: space-between;
+  font-size: 14px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row h3 {
+  font-size: 14px;
+}
+.all-time {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn-more {
+  font-size: 12px;
+  align-self: center;
+  margin: 0;
 }

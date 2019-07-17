@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+
 import './App.css';
+import Game from './components/Game';
+import Leaderboard from './components/Leaderboard';
+
+const info = require('./players.json');
 
 function App() {
+
+  const [leaders, setLeaders] = useState(info);
+
+  //There is a warning showed in console about 'setLeaders', I will use that later for update the local state. 
+  useEffect(() => {
+    //I will use this hook later, do not delete it!
+    // console.log(leaders.topScore.allTime);
+    // console.log(leaders.topScore.lastMonth);
+
+  });
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Game />
+      <Leaderboard leaders={leaders}/>
     </div>
   );
 }
+
 
 export default App;
