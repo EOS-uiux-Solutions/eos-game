@@ -6,11 +6,17 @@ class Player {
     this.h = args.h
     args.layer.childrens.push(this)
 
-
+    this.velocity = createVector()
+    this.grav = .09;
     this.state = args.initState
+    this.player = createSprite(this.w, this.h)
 
     this.visible = true
     this.updateCheck = args.updateCheck
+
+    this.player.addAnimation('normal', '../../assets/img/player/1.png', '../../assets/img/player/3.png');
+    this.player.scale = 0.2
+    this.player.debug = true
   }
 
   show() {
@@ -23,21 +29,28 @@ class Player {
   update() {
     if(!this.updateCheck) return
     this[this.state]()
-    playerSprite.position.x = this.xpos
-    playerSprite.position.y = this.ypos
+    this.player.position.x = this.xpos
+    this.player.position.y = this.ypos
   }
 
   idleState() {
-    // console.log('player is idle')
+    this.ypos = width / 2 - 20
   }
 
   moveState() {
     // console.log('player is moving')
-    this.xpos = mouseX
-    this.ypos = mouseY
+    // this.xpos = mouseX
+    // this.ypos = mouseY
   }
 
   jumpState() {
-    this.ypos++
+    this.velocity.y += this.grav; // vy = vy + gravity;
+    this.ypos += this.velocity.y; // y = y + vy;
+    this.ypos = constrain(this.ypos, - 40, width / 2 - 20);
+    return this;
+  }
+
+  debug() {
+    this.player.debug = true
   }
 }

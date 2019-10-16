@@ -11,13 +11,18 @@ class Obstacle {
     this.obstacle = createSprite(this.xpos, this.ypos);
     /* Push obstacles to world. */
     args.layer.childrens.push(this)
+
+    this.obstacle.addAnimation('normal', '../../assets/img/obstacle/mushroom.png');
+    this.obstacle.scale = 0.2
+
+    this.obstacle.debug = true
   }
 
   show() {
     if(!this.visible) return
     noStroke()
-    // noFill(this.color)
-    fill(255)
+    noFill()
+    // fill(255)
     rect(this.xpos, this.ypos, this.w, this.h)
   }
 
@@ -28,16 +33,9 @@ class Obstacle {
     this.obstacle.position.y = this.ypos
   }
 
-  idleState() {
-
-  }
+  idleState() {}
 
   moveState() {
     this.xpos = this.xpos - this.speed
-  }
-
-  createObstacleSprite() {
-    this.obstacle.addAnimation('normal', '../../img/obstacle/box0001.png', '../../img/obstacle/box0003.png');
-    this.obstacle.scale = 10
   }
 }
