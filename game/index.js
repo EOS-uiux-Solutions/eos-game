@@ -48,7 +48,6 @@ const update = args => {
   world.update()
 
   /* Update the obstacle speed over time */
-  // initSpeed = initSpeed + 0.005
   initSpeed = initSpeed + 0.005
 
   /* Draw all sprites */

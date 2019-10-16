@@ -16,6 +16,7 @@ class Obstacle {
     this.obstacle.scale = 0.2
 
     this.obstacle.debug = true
+    this.obstacle.setCollider('rectangle', 0, 0, 100, 120)
   }
 
   show() {
