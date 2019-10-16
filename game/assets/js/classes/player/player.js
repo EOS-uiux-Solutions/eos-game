@@ -7,7 +7,7 @@ class Player {
     args.layer.childrens.push(this)
 
     this.velocity = createVector()
-    this.grav = .09;
+    this.grav = 0.1;
     this.state = args.initState
     this.player = createSprite(this.w, this.h)
 
@@ -18,7 +18,7 @@ class Player {
     this.player.scale = 0.2
     this.player.debug = true
 
-    this.player.setCollider('rectangle', 0, 0, 70, 400)
+    this.player.setCollider('rectangle', 0, 10, 70, 200)
   }
 
   show() {
@@ -48,7 +48,7 @@ class Player {
   jumpState() {
     this.velocity.y += this.grav; // vy = vy + gravity;
     this.ypos += this.velocity.y; // y = y + vy;
-    this.ypos = constrain(this.ypos, - 40, width / 2 - 20);
+    this.ypos = constrain(this.ypos, -10, 400);
     return this;
   }
 

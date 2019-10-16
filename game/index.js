@@ -2,10 +2,11 @@ let world, player, obstacle, playerSprite, obstaclesArr, initSpeed = 5, score = 
 obstaclesArr = []
 
 // Assets
-let sky
+let sky, ground
 
 function preload () {
   sky = loadImage('assets/img/world/sky.png')
+  ground = loadImage('assets/img/world/ground.png')
 }
 
 function setup() {
@@ -18,8 +19,8 @@ function setup() {
     ========================================================================== */
   /* init Player */
   player = new Player({
-    x: 50,
-    y: width / 2 - 20,
+    x: 80,
+    y: 400,
     w: 20,
     h: 20,
     updateCheck: true,
@@ -78,6 +79,7 @@ const render = args => {
 /* Render static assets */
 const staticRender = args => {
   image(sky, 0, 0);
+  image(ground, 0, 430, 640, 50);
 }
 
 /* Function that adds obstacles into map and also makes sure we clear the array for performance */
@@ -89,7 +91,7 @@ const generateObstacles = () => {
   if (frameCount % 90 == 0) {
     obstaclesArr.push(new Obstacle({
       x: 900,
-      y: width / 2,
+      y: 420,
       w: 20,
       h: 20,
       updateCheck: true,
@@ -107,7 +109,8 @@ const generateObstacles = () => {
 function keyPressed() {
   if(!key === ' ') return
   player.state = 'jumpState'
-  player.velocity.y = -3;
+
+  player.velocity.y = -3
 }
 
 // function keyReleased() {

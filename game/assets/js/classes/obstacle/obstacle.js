@@ -12,11 +12,19 @@ class Obstacle {
     /* Push obstacles to world. */
     args.layer.childrens.push(this)
 
-    this.obstacle.addAnimation('normal', '../../assets/img/obstacle/mushroom.png');
+    this.obstacleType = [
+      '../../assets/img/obstacle/mushroom.png',
+      '../../assets/img/obstacle/logs.png',
+      '../../assets/img/obstacle/rock.png'
+    ]
+
+    this.image = loadImage(random(this.obstacleType))
+
+    this.obstacle.addImage('mushroom', this.image);
     this.obstacle.scale = 0.2
 
     this.obstacle.debug = true
-    this.obstacle.setCollider('rectangle', 0, 0, 100, 120)
+    this.obstacle.setCollider('rectangle', 0, 0, 70, 120)
   }
 
   show() {
