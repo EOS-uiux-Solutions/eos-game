@@ -1,9 +1,17 @@
-let world, player, obstacle, playerSprite, obstacleSprite
+let world, player, obstacle, playerSprite, obstaclesArr, initSpeed = 5, score = 0
+obstaclesArr = []
+
+// Assets
+let sky, ground
+
+function preload () {
+  sky = loadImage('assets/img/world/sky.png')
+  ground = loadImage('assets/img/world/ground.png')
+}
 
 function setup() {
   createCanvas(640, 480);
-
-  /* Ground */
+  /* World definition */
   world = new World()
 
   /* ==========================================================================
@@ -11,45 +19,18 @@ function setup() {
     ========================================================================== */
   /* init Player */
   player = new Player({
-    x: 20,
-    y: width / 2,
+    x: 80,
+    y: 400,
     w: 20,
     h: 20,
     updateCheck: true,
     layer: world,
     initState: 'moveState'
   })
-
-  /* Player sprite */
-  playerSprite = createSprite(200, 200);
-  playerSprite.addAnimation('normal', './assets/img/player/asterisk_normal0001.png', './assets/img/player/asterisk_normal0003.png');
-  playerSprite.addAnimation('round', './assets/img/player/asterisk_circle0006.png', './assets/img/player/asterisk_circle0008.png');
-  playerSprite.scale = 1
-
-  /* ==========================================================================
-     Obstacle
-    ========================================================================== */
-  obstacle = new Obstacle({
-    x: 500,
-    y: width / 2,
-    w: 20,
-    h: 20,
-    updateCheck: true,
-    layer: world,
-    initState: 'moveState'
-  })
-
-  /* Obstacle sprite */
-  obstacleSprite = createSprite(obstacle.x, obstacle.y);
-  obstacleSprite.addAnimation('normal', './assets/img/obstacle/box0001.png', './assets/img/obstacle/box0003.png');
-  obstacleSprite.scale = 1
-
-  /* DEBUG
-  ========================================================================== */
-  // console.log('playerSprite: ', playerSprite.getBoundingBox());
 }
 
 function draw() {
+  clear()
   /* "ENGINE" */
   staticRender()
   fixUpdate()
@@ -66,40 +47,71 @@ const fixUpdate = args => {
 /* Game logic */
 const update = args => {
   world.update()
+
+  /* Update the obstacle speed over time */
+  initSpeed = initSpeed + 0.005
+
+  /* Draw all sprites */
   drawSprites()
+  generateObstacles()
 }
 
 /* After pos update */
 const lateUpdate = args => {
-  if (playerSprite.overlap(obstacleSprite)) {
-      playerSprite.changeAnimation('round')
+  /* Screen score */
+  fill(255)
+  text(`Score: ${ Math.round(score = score + 0.1) } `, 10, 30);
+
+  /* Check if ther's a collision between player and any obstacle in the array */
+  obstaclesArr.forEach(element => {
+    if (player.player.overlap(element.obstacle)) {
       noLoop()
-  } else {
-    playerSprite.changeAnimation('normal');
-  }
+    }
+  });
 }
 
 /* Render elements */
 const render = args => {
   world.show()
-  playerSprite.debug  = mouseIsPressed
-  obstacleSprite.debug  = mouseIsPressed
+  player.show()
 }
 
 /* Render static assets */
 const staticRender = args => {
-  background(0)
+  image(sky, 0, 0);
+  image(ground, 0, 430, 640, 50);
+}
+
+/* Function that adds obstacles into map and also makes sure we clear the array for performance */
+const generateObstacles = () => {
+  if (obstaclesArr.length > 10) {
+    obstaclesArr.shift();
+  }
+
+  if (frameCount % 90 == 0) {
+    obstaclesArr.push(new Obstacle({
+      x: 900,
+      y: 420,
+      w: 20,
+      h: 20,
+      updateCheck: true,
+      layer: world,
+      initState: 'moveState',
+      speed: initSpeed,
+    }));
+  }
 }
 
 
 /* ==========================================================================
   Player controller, jump functionality
   ========================================================================== */
-// function keyPressed() {
-//   if(!key === ' ') return
-//   player.state = 'moveState'
-//   obstacle.state = 'moveState'
-// }
+function keyPressed() {
+  if(!key === ' ') return
+  player.state = 'jumpState'
+
+  player.velocity.y = -3
+}
 
 // function keyReleased() {
 //   if (!key === ' ') return
