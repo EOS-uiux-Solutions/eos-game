@@ -1,5 +1,4 @@
 /**
- * @class
  * @param { Number } x x location
  * @param { Number } y y location
  * @param { Number } w w obstacle  width
@@ -34,7 +33,7 @@ class Obstacle {
     this.obstacle.scale = 0.2
 
     this.obstacle.debug = true
-    this.obstacle.setCollider('rectangle', 0, 0, 80, 130)
+    this.obstacle.setCollider('rectangle', 0, 0, 100, 130)
   }
 
   show() {

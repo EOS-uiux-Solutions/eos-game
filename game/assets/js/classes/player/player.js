@@ -41,5 +41,4 @@ class Player {
     this.ypos = constrain(this.ypos, - 10, 400)
     return this
   }
-
 }

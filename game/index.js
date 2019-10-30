@@ -3,8 +3,7 @@
   Variable definition
   ========================================================================== */
 let world, player, obstaclesArr = [] , initSpeed = 5, score = 0
-
-let sky, ground, mountain, assets, mountainX = 40, assetsX = 335, objective
+let sky, ground, mountain, assets, mountainX = 40, assetsX = 480, objective
 
 /* ==========================================================================
   p5.js preload function
@@ -93,7 +92,7 @@ const lateUpdate = args => {
   /* Check if ther's a collision between player and any obstacle in the array */
   obstaclesArr.forEach(element => {
     if (player.player.overlap(element.obstacle)) {
-      noLoop()
+      // noLoop()
     }
   })
 }
@@ -112,9 +111,9 @@ const render = args => {
   ========================================================================== */
 const staticRender = args => {
   image(sky, 0, 0)
-  image(mountain, mountainX = mountainX - 0.05, 235, 640, 200)
+  image(mountain, mountainX = mountainX - 0.05, 232, 640, 200)
   image(ground, 0, 430, 640, 50)
-  image(assets, assetsX = assetsX - initSpeed / 88, 235, 500, 200)
+  image(assets, assetsX = assetsX - 0.09, 235, 400, 200)
   image(objective, 500, 300, 50, 90)
 }
 
