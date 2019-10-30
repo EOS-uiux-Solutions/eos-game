@@ -17,7 +17,7 @@ function preload () {
 }
 
 /* ==========================================================================
-  General board setup
+  General page setup
   ========================================================================== */
 let $gameOver
 
@@ -160,6 +160,12 @@ const generateObstacles = params => {
   ========================================================================== */
 function keyPressed() {
   if(!key === ' ') return
+  player.state = 'jumpState'
+
+  player.velocity.y = - 3
+}
+
+function touchStarted(event) {
   player.state = 'jumpState'
 
   player.velocity.y = - 3
