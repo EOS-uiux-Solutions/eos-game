@@ -17,6 +17,16 @@ function preload () {
 }
 
 /* ==========================================================================
+  General board setup
+  ========================================================================== */
+let $gameOver
+
+$(function () {
+  $gameOver = $('.js-game-over')
+  $gameOver.hide()
+})
+
+/* ==========================================================================
   p5.js setup function
   ========================================================================== */
 function setup() {
@@ -92,7 +102,8 @@ const lateUpdate = args => {
   /* Check if ther's a collision between player and any obstacle in the array */
   obstaclesArr.forEach(element => {
     if (player.player.overlap(element.obstacle)) {
-      // noLoop()
+      $gameOver.show()
+      noLoop()
     }
   })
 }
@@ -151,5 +162,5 @@ function keyPressed() {
   if(!key === ' ') return
   player.state = 'jumpState'
 
-  player.velocity.y = - 2.9
+  player.velocity.y = - 3
 }

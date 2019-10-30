@@ -6,16 +6,21 @@
   <title>EOS - Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- p5 js dependecy -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="./vendors/p5.min.js"></script>
+  <script src="./vendors/p5.dom.min.js"></script>
   <script src="./vendors/p5.play.js"></script>
   <!-- Game files -->
   <script src="index.js"></script>
   <script src="./assets/js/classes/layers/world.js"></script>
   <script src="./assets/js/classes/player/player.js"></script>
   <script src="./assets/js/classes/obstacle/obstacle.js"></script>
+  <link rel="stylesheet" href="/assets/css/game-over.css">
 </head>
 <body>
-
+  <div class='js-game-over game-over'>
+    <h2>Game over</h2>
+    <button type="button" name="button">Tweet my results</button>
+  </div>
 </body>
 </html>

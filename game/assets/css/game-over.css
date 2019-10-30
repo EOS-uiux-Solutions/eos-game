@@ -1,0 +1,7 @@
+.game-over {
+  position: absolute;
+  top: 50vh;
+  background: white;
+  padding: 1em;
+  border: 1px solid gray
+}
