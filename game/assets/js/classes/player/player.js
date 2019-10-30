@@ -14,7 +14,7 @@ class Player {
     this.visible = true
     this.updateCheck = params.updateCheck
 
-    this.player.addAnimation('normal', '/assets/img/player/1.png', '/assets/img/player/3.png');
+    this.player.addAnimation('normal', './assets/img/player/1.png', './assets/img/player/3.png');
     this.player.scale = 0.2
     this.player.debug = true
 
