@@ -1,16 +1,25 @@
+/**
+ * @param { Number } x x location
+ * @param { Number } y y location
+ * @param { Number } w w obstacle  width
+ * @param { Number } h h obstacle  height
+ * @param { Number } speed obstalce speed
+ * @param { Number } initState object initial state
+ */
 class Obstacle {
-  constructor(args) {
-    this.xpos = args.x
-    this.ypos = args.y
-    this.w = args.w
-    this.h = args.h
-    this.speed = args.speed
-    this.state = args.initState
+  constructor(params) {
+    this.xpos = params.x
+    this.ypos = params.y
+    this.w = params.w
+    this.h = params.h
+    this.speed = params.speed
+    this.state = params.initState
     this.visible = true
-    this.updateCheck = args.updateCheck
+    this.updateCheck = params.updateCheck
     this.obstacle = createSprite(this.xpos, this.ypos);
+
     /* Push obstacles to world. */
-    args.layer.childrens.push(this)
+    params.layer.childrens.push(this)
 
     this.obstacleType = [
       '../../assets/img/obstacle/mushroom.png',
@@ -24,14 +33,13 @@ class Obstacle {
     this.obstacle.scale = 0.2
 
     this.obstacle.debug = true
-    this.obstacle.setCollider('rectangle', 0, 0, 70, 120)
+    this.obstacle.setCollider('rectangle', 0, 0, 100, 130)
   }
 
   show() {
     if(!this.visible) return
     noStroke()
     noFill()
-    // fill(255)
     rect(this.xpos, this.ypos, this.w, this.h)
   }
 
@@ -41,8 +49,6 @@ class Obstacle {
     this.obstacle.position.x = this.xpos
     this.obstacle.position.y = this.ypos
   }
-
-  idleState() {}
 
   moveState() {
     this.xpos = this.xpos - this.speed
