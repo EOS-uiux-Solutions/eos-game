@@ -22,9 +22,9 @@ class Obstacle {
     params.layer.childrens.push(this)
 
     this.obstacleType = [
-      '/assets/img/obstacle/mushroom.png',
-      '/assets/img/obstacle/logs.png',
-      '/assets/img/obstacle/rock.png'
+      './assets/img/obstacle/mushroom.png',
+      './assets/img/obstacle/logs.png',
+      './assets/img/obstacle/rock.png'
     ]
 
     this.image = loadImage(random(this.obstacleType))
