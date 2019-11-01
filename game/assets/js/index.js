@@ -160,13 +160,16 @@ const generateObstacles = params => {
   ========================================================================== */
 function keyPressed() {
   if(!key === ' ') return
-  player.state = 'jumpState'
-
-  player.velocity.y = - 3
+  singleJump()
 }
 
 function touchStarted(event) {
-  player.state = 'jumpState'
+  singleJump()
+}
 
-  player.velocity.y = - 3
+function singleJump() {
+  if( player.velocity.y > 4) {
+    player.velocity.y = -4.5
+  }
+  return
 }

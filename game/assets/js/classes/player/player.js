@@ -7,7 +7,7 @@ class Player {
     params.layer.childrens.push(this)
 
     this.velocity = createVector()
-    this.grav = 0.1;
+    this.grav = 0.2;
     this.state = params.initState
     this.player = createSprite(this.w, this.h)
 
@@ -38,7 +38,7 @@ class Player {
   jumpState() {
     this.velocity.y += this.grav // vy = vy + gravity
     this.ypos += this.velocity.y // y = y + vy
-    this.ypos = constrain(this.ypos, - 10, 400)
+    this.ypos = constrain(this.ypos, 350, 400)
     return this
   }
 }
