@@ -30,7 +30,7 @@ $(function () {
   p5.js setup function
   ========================================================================== */
 function setup() {
-  createCanvas(640, 480);
+  createCanvas(800, 480);
 
   /* World definition */
   world = new World()
@@ -122,10 +122,10 @@ const render = args => {
   ========================================================================== */
 const staticRender = args => {
   image(sky, 0, 0)
-  image(mountain, mountainX = mountainX - 0.05, 232, 640, 200)
-  image(ground, 0, 430, 640, 50)
+  image(mountain, mountainX = mountainX - 0.05, 232, 800, 200)
+  image(ground, 0, 430, 800, 50)
   image(assets, assetsX = assetsX - 0.09, 235, 400, 200)
-  image(objective, 500, 300, 50, 90)
+  image(objective, 700, 300, 50, 90)
 }
 
 /* ==========================================================================

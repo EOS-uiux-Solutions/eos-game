@@ -1,0 +1,35 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("../img/page/bg.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.hophopbunny {
+  position: relative;
+  display: block;
+  margin: auto;
+  top: 30px;
+  left: 50%;
+  margin-left: -125px;
+  z-index: 500;
+}

@@ -1,7 +1,12 @@
 .game-over {
   position: absolute;
   top: 50vh;
-  background: white;
+  background: #ff410a;
   padding: 1em;
-  border: 1px solid gray
+  border: 1px solid gray;
+  z-index: 100;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+  text-align: center;
 }
