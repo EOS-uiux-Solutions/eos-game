@@ -17,3 +17,21 @@
   position: absolute;
   top: -20px;
 }
+
+.game-over h3 {
+  color: #ff5400;
+}
+
+.game-over .score {
+  background: #d6d6d6;
+  border: 4px solid #c5c5c5;
+  border-radius: 12px;
+  margin: 12px;
+  padding: 7px;
+}
+
+.game-over .buttons {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
