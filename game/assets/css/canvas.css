@@ -1,9 +1,9 @@
 .p5Canvas {
-  margin: auto;
-  display: block;
-  border-radius: 30px;
   border: 10px solid white;
+  border-radius: 30px;
   box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
-  z-index: 30;
+  display: block;
+  margin: auto;
   position: relative;
+  z-index: 30;
 }
