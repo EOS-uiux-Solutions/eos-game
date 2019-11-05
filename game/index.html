@@ -19,6 +19,16 @@
   <link rel="stylesheet" href="./assets/css/game-over.css">
   <link rel="stylesheet" href="./assets/css/canvas.css">
   <link rel="stylesheet" href="./assets/css/page.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQTHLC73K4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZQTHLC73K4');
+  </script>
 </head>
 <body>
   <div class="bg">
@@ -33,7 +43,7 @@
       <a href="#">
         <img src="assets/img/page/share.png" alt="">
       </a>
-      <a href="#">
+      <a onclick="location.reload();">
         <img src="assets/img/page/retry.png" alt="">
       </a>
     </div>

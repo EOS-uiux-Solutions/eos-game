@@ -29,10 +29,10 @@ class Obstacle {
 
     this.image = loadImage(random(this.obstacleType))
 
-    this.obstacle.addImage('mushroom', this.image);
+    this.obstacle.addImage('obstacle', this.image);
     this.obstacle.scale = 0.2
 
-    this.obstacle.debug = true
+    this.obstacle.debug = false
     this.obstacle.setCollider('rectangle', 0, 0, 100, 130)
   }
 
