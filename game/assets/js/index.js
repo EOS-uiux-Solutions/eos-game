@@ -3,13 +3,14 @@
   Variable definition
   ========================================================================== */
 let world, player, obstaclesArr = [] , initSpeed = 5, score = 0
-let sky, ground, mountain, assets, mountainX = 40, assetsX = 480, objective
+let clouds, sky, ground, mountain, assets, mountainX = 40, assetsX = 480, objective, cloudXPos = -800
 
 /* ==========================================================================
   p5.js preload function
   ========================================================================== */
 function preload () {
   sky = loadImage('assets/img/world/sky.png')
+  clouds = loadImage('assets/img/world/clouds.png')
   ground = loadImage('assets/img/world/ground.png')
   mountain = loadImage('assets/img/world/mountain.png')
   assets = loadImage('assets/img/world/assets.png')
@@ -137,10 +138,11 @@ const render = args => {
   ========================================================================== */
 const staticRender = args => {
   image(sky, 0, 0)
-  image(mountain, mountainX = mountainX - 0.05, 232, 800, 200)
+  image(clouds, cloudXPos = cloudXPos + 0.08, 0, 1016 / 1.2, 480 / 1.2)
+  image(mountain, mountainX = mountainX - 0.03 , 149, 993, 291)
   image(ground, 0, 430, 800, 50)
-  image(assets, assetsX = assetsX - 0.09, 235, 400, 200)
-  image(objective, 700, 300, 50, 90)
+  // image(assets, assetsX = assetsX - 0.06 , 235, 848 / 1.2, 242 / 1.2)
+  image(objective, 600, 280, 50, 90)
 }
 
 /* ==========================================================================
