@@ -104,8 +104,8 @@ const lateUpdate = args => {
   obstaclesArr.forEach(element => {
     if (player.player.overlap(element.obstacle)) {
       $('.js-final-score').text(Math.round(score))
-      // $gameOver.show()
-      // noLoop()
+      $gameOver.show()
+      noLoop()
     }
   })
 }
