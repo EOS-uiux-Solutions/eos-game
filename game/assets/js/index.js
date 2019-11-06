@@ -94,6 +94,13 @@ const update = args => {
 /* ==========================================================================
   Post update
   ========================================================================== */
+
+// ts stands for Twitter Share
+const tsMainURL = 'https://twitter.com/intent/tweet'
+const tsHashtag = 'hophopbunny'
+const tsGameURL = 'https://games.eosdesignsystem.com'
+const tsText = 'points! beat me at Hop Hop Bunny, a mini, free, and open source game by @eosdesignsystem'
+
 const lateUpdate = args => {
   /* Screen score */
   fill(255)
@@ -102,7 +109,14 @@ const lateUpdate = args => {
   /* Check if ther's a collision between player and any obstacle in the array */
   obstaclesArr.forEach(element => {
     if (player.player.overlap(element.obstacle)) {
-      $('.js-final-score').text(Math.round(score))
+
+      /* prepare string for Twitter share button */
+      let finalScore = Math.round(score)
+      let tsButtonHref = `${tsMainURL}?hashtags=${tsHashtag}&url=${tsGameURL}&text=${finalScore} ${tsText}`
+
+      /* populate the DOM with the score and twitter share URL*/
+      $('.js-tsButton').prop('href', tsButtonHref)
+      $('.js-final-score').text(finalScore)
       $gameOver.show()
       noLoop()
     }
