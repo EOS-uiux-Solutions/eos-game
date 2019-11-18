@@ -8,6 +8,10 @@ body {
   margin: 0;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 .bg {
   /* The image used */
   background-image: url("../img/page/bg.jpg");
@@ -25,12 +29,13 @@ body {
   z-index: 1;
 }
 
-.hophopbunny {
+.logo {
   display: block;
+  width: 450px;
   left: 50%;
   margin: auto;
-  margin-left: -125px;
+  margin-left: -205px;
   position: relative;
-  top: 30px;
+  top: 50px;
   z-index: 500;
 }

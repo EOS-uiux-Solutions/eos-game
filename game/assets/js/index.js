@@ -116,7 +116,7 @@ const lateUpdate = args => {
       let tsButtonHref = `${tsMainURL}?hashtags=${tsHashtag}&url=${tsGameURL}&text=${finalScore} ${tsText}`
 
       /* populate the DOM with the score and twitter share URL*/
-      $('.js-tsButton').prop('href', tsButtonHref)
+      $('.js-tsButton').prop({'href': tsButtonHref, 'target': 'blank'})
       $('.js-final-score').text(finalScore)
       $gameOver.show()
       noLoop()
@@ -188,5 +188,6 @@ function singleJump() {
   if( player.velocity.y > 4) {
     player.velocity.y = -4.5
   }
+
   return
 }
