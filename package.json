@@ -1,6 +1,9 @@
 {
-  "name": "EOS game",
+  "name": "EOS-game",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "http://suse-uiux.gitlab.io/eos-game"
+  "homepage": "https://games.eosdesignsystem.com/",
+  "scripts": {
+    "serve:macos": "./bin/serve-macos",
+    "serve:linux": "./bin/serve-linux"
+  }
 }

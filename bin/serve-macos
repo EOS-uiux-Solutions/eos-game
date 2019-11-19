@@ -1,0 +1,2 @@
+cd game/
+python -m SimpleHTTPServer
