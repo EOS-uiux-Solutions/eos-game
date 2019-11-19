@@ -31,10 +31,10 @@ a:hover {
 
 .logo {
   display: block;
-  width: 450px;
+  width: 250px;
   left: 50%;
   margin: auto;
-  margin-left: -205px;
+  margin-left: -115px;
   position: relative;
   top: 50px;
   z-index: 500;
