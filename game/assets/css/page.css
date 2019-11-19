@@ -6,27 +6,18 @@ body {
 body {
   font-family: 'Alfa Slab One', cursive;
   margin: 0;
-}
-
-a:hover {
-  cursor: pointer;
-}
-
-.bg {
   /* The image used */
   background-image: url("../img/page/bg.jpg");
+  background-color: #094762;
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
 
-  /* Full height */
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
+a:hover {
+  cursor: pointer;
 }
 
 .logo {
