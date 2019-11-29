@@ -3,7 +3,7 @@
   Variable definition
   ========================================================================== */
 let world, player, obstaclesArr = [] , initSpeed = 5, score = 0
-let clouds, sky, ground, mountain, assets, mountainX = 40, assetsX = 480, objective, cloudXPos = -800
+let clouds, sky, ground, mountain, assets, mountainX = 40, assetsX = 480, objective, cloudXPos = -800, baseSound, jumpSound, endSound
 
 /* ==========================================================================
   p5.js preload function
@@ -15,6 +15,9 @@ function preload () {
   mountain = loadImage('assets/img/world/mountain.png')
   assets = loadImage('assets/img/world/assets.png')
   objective = loadImage('assets/img/world/objective.png')
+  baseSound = loadSound('assets/sound/base.ogg')
+  jumpSound = loadSound('assets/sound/jump.ogg')
+  endSound = loadSound('assets/sound/end.ogg')
 }
 
 /* ==========================================================================
@@ -46,6 +49,15 @@ function setup() {
     layer: world,
     initState: 'jumpState'
   })
+
+   // Sound files
+   soundFormats('mp3', 'ogg');
+   baseSound.play()
+
+   // Setup the volume for sounds
+   baseSound.setVolume(0.1)
+   jumpSound.setVolume(0.05)
+   endSound.setVolume(0.2)
 }
 
 /* ==========================================================================
@@ -121,6 +133,8 @@ const lateUpdate = args => {
       $('.js-final-score').text(finalScore)
       $gameOver.show()
       noLoop()
+      endSound.play()
+      baseSound.stop()
     }
   })
 }
@@ -188,6 +202,7 @@ function touchStarted(event) {
 function singleJump() {
   if( player.velocity.y > 4) {
     player.velocity.y = -4.5
+    jumpSound.play()
   }
 
   return
