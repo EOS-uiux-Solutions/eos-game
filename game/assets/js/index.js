@@ -20,6 +20,17 @@ function preload () {
   endSound = loadSound('assets/sound/end.ogg')
 }
 
+//initial framecount for obstacle
+let obstacleFrameCount = 70
+
+//return random frame counts from list
+function random_item(items)
+{
+  return items[Math.floor(Math.random()*items.length)];    
+}
+//framecounts for obstacle
+let obstacleFrameCountArray = [66,70,74,78,82,86,92,98,104]
+
 /* ==========================================================================
   General page setup
   ========================================================================== */
@@ -173,7 +184,9 @@ const generateObstacles = params => {
     obstaclesArr.shift()
   }
 
-  if (frameCount % 78  == 0) {
+  if (frameCount == obstacleFrameCount) {
+    //if time for obstacle, set random framecount for next obstacle
+    obstacleFrameCount = random_item(obstacleFrameCountArray) + frameCount
     obstaclesArr.push(new Obstacle({
       x: xPos,
       y: yPos,
