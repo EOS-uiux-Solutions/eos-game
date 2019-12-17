@@ -45,7 +45,10 @@ $(function () {
   p5.js setup function
   ========================================================================== */
 function setup() {
-  createCanvas(800, 480);
+  var mainCanvas = createCanvas(800, 480);
+  
+  //replaced touchStarted function as it works for whole screen
+  mainCanvas.mousePressed(singleJump);
 
   /* World definition */
   world = new World()
@@ -208,9 +211,6 @@ function keyPressed() {
   singleJump()
 }
 
-function touchStarted(event) {
-  singleJump()
-}
 
 function singleJump() {
   if( player.velocity.y > 4) {
