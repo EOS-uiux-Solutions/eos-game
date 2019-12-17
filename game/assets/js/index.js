@@ -5,6 +5,8 @@
 let world, player, obstaclesArr = [] , initSpeed = 5, score = 0
 let clouds, sky, ground, mountain, assets, mountainX = 40, assetsX = 480, objective, cloudXPos = -800, baseSound, jumpSound, endSound
 
+//too see if game is in pause state
+let pauseStatus = false
 /* ==========================================================================
   p5.js preload function
   ========================================================================== */
@@ -46,7 +48,9 @@ $(function () {
   ========================================================================== */
 function setup() {
   var mainCanvas = createCanvas(800, 480);
-  
+  //placing canvas inside div with id game
+  mainCanvas.parent("game")
+
   //replaced touchStarted function as it works for whole screen
   mainCanvas.mousePressed(singleJump);
 
@@ -219,4 +223,18 @@ function singleJump() {
   }
 
   return
+}
+
+function pauseGame() {
+  if (pauseStatus == false){
+    noLoop()
+    pauseStatus = true
+    $('#pauseBtn')[0].innerText = "play_circle_outline"
+  }
+
+  else {
+    loop()
+    pauseStatus = false
+    $('#pauseBtn')[0].innerText = "pause_circle_outline"
+  }
 }
