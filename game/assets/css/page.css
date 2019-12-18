@@ -30,3 +30,20 @@ a:hover {
   top: 50px;
   z-index: 500;
 }
+
+#pauseBtn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 10px;
+  font-size: 30px;
+
+}
+
+#game {
+  position: relative;
+  display: table;
+  margin: auto;
+}
