@@ -41,25 +41,42 @@ function random_item(items)
   ========================================================================== */
 
 /* game ui elements */
+let $gameOver, $menu, $logo, $pause
 
-let $gameOver, $menu, $logo
-
+/* initiate the game with all elements hidden to display them accordingly */
 $(function () {
   $gameOver = $('.js-game-over').hide()
-  $menu = $('.js-menu')
+  $menu = $('.js-menu').hide()
   $logo = $('.js-logo').hide()
-
-  $('.js-start').on('click', () => {
-    $menu.hide()
-    console.log('hide');
-    loop()
-  })
+  $pause = $('.js-pause').hide()
 })
+
+/* Init function:
+ * It will show the menu and logo first
+ */
 
 const initGame = () => {
   $menu.show()
   $logo.show()
 }
+
+/* Sound settings */
+const musicVol = 0.1
+const soundEfxVol = 0.05
+
+/* Start button */
+$(document).on('click', '.js-start', () => {
+  $menu.hide()
+  $pause.show()
+  loop()
+})
+
+/* Music volume configuration */
+$(document).on('input', '.js-music-volume', () => {
+  const volumeSelected = parseFloat($('.js-music-volume').val())
+  $('.js-slider-value').html(volumeSelected);
+  baseSound.setVolume(volumeSelected)
+})
 
 /* ==========================================================================
   p5.js setup function
@@ -91,9 +108,9 @@ function setup() {
   baseSound.play()
 
   // Setup the volume for sounds
-  baseSound.setVolume(0.1)
-  jumpSound.setVolume(0.05)
-  endSound.setVolume(0.2)
+  baseSound.setVolume(musicVol)
+  jumpSound.setVolume(soundEfxVol)
+  endSound.setVolume(soundEfxVol)
 
   // Start the game paused so the user can change settings and start it when ready
   noLoop()
@@ -251,12 +268,12 @@ function pauseGame() {
   if (pauseStatus == false){
     noLoop()
     pauseStatus = true
-    $('.js-pauseBtn')[0].innerText = "play_circle_outline"
+    $('.js-pause')[0].innerText = "play_circle_outline"
   }
 
   else {
     loop()
     pauseStatus = false
-    $('.js-pauseBtn')[0].innerText = "pause_circle_outline"
+    $('.js-pause')[0].innerText = "pause_circle_outline"
   }
 }
