@@ -74,8 +74,14 @@ $(document).on('click', '.js-start', () => {
 /* Music volume configuration */
 $(document).on('input', '.js-music-volume', () => {
   const volumeSelected = parseFloat($('.js-music-volume').val())
-  $('.js-slider-value').html(volumeSelected);
   baseSound.setVolume(volumeSelected)
+})
+
+/* Sound EFX volume configuration */
+$(document).on('input', '.js-sound-volume', () => {
+  const volumeSelected = parseFloat($('.js-sound-volume').val())
+  jumpSound.setVolume(volumeSelected)
+  endSound.setVolume(volumeSelected)
 })
 
 /* ==========================================================================
