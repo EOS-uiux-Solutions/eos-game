@@ -26,6 +26,11 @@
 
 </head>
   <body>
+    <div class="menu js-menu">
+      <div class="js-start">
+        Start
+      </div>
+    </div>
     <div class="portrait-screen js-portrait-screen">
       <h1>
         Please rotate your device.
@@ -33,9 +38,9 @@
         This game only works horizontally.
       </h1>
     </div>
-    <img class='logo' src='assets/img/page/hophop-bunny-logo.svg'/>
+    <img class='logo js-logo' src='assets/img/page/hophop-bunny-logo.svg'/>
     <div id="game">
-    <i onclick="pauseGame()" id="pauseBtn" class="eos-icons">pause_circle_outline</i>
+      <i onclick="pauseGame()" class="eos-icons pauseBtn js-pauseBtn">pause_circle_outline</i>
     </div>
 
     <div class='js-game-over game-over'>

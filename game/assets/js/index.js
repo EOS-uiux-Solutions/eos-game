@@ -1,12 +1,20 @@
 'use strict'
 /* ==========================================================================
-  Variable definition
+  Variables definition
   ========================================================================== */
 let world, player, obstaclesArr = [] , initSpeed = 5, score = 0
-let clouds, sky, ground, mountain, assets, mountainX = 40, assetsX = 480, objective, cloudXPos = -800, baseSound, jumpSound, endSound
+let clouds, sky, ground, mountain, assets, mountainX = 40, assetsX = 480,
+  objective, cloudXPos = -800, baseSound, jumpSound, endSound
 
-//too see if game is in pause state
+// too see if the game is in pause state
 let pauseStatus = false
+
+// initial framecount for obstacle
+let obstacleFrameCount = 70
+
+// framecounts for obstacle
+let obstacleFrameCountArray = [66,70,74,78,82,86,92,98,104]
+
 /* ==========================================================================
   p5.js preload function
   ========================================================================== */
@@ -22,26 +30,36 @@ function preload () {
   endSound = loadSound('assets/sound/end.ogg')
 }
 
-//initial framecount for obstacle
-let obstacleFrameCount = 70
-
 //return random frame counts from list
 function random_item(items)
 {
-  return items[Math.floor(Math.random()*items.length)];    
+  return items[Math.floor(Math.random()*items.length)];
 }
-//framecounts for obstacle
-let obstacleFrameCountArray = [66,70,74,78,82,86,92,98,104]
 
 /* ==========================================================================
   General page setup
   ========================================================================== */
-let $gameOver
+
+/* game ui elements */
+
+let $gameOver, $menu, $logo
 
 $(function () {
-  $gameOver = $('.js-game-over')
-  $gameOver.hide()
+  $gameOver = $('.js-game-over').hide()
+  $menu = $('.js-menu')
+  $logo = $('.js-logo').hide()
+
+  $('.js-start').on('click', () => {
+    $menu.hide()
+    console.log('hide');
+    loop()
+  })
 })
+
+const initGame = () => {
+  $menu.show()
+  $logo.show()
+}
 
 /* ==========================================================================
   p5.js setup function
@@ -68,14 +86,18 @@ function setup() {
     initState: 'jumpState'
   })
 
-   // Sound files
-   soundFormats('mp3', 'ogg');
-   baseSound.play()
+  // Sound files
+  soundFormats('mp3', 'ogg');
+  baseSound.play()
 
-   // Setup the volume for sounds
-   baseSound.setVolume(0.1)
-   jumpSound.setVolume(0.05)
-   endSound.setVolume(0.2)
+  // Setup the volume for sounds
+  baseSound.setVolume(0.1)
+  jumpSound.setVolume(0.05)
+  endSound.setVolume(0.2)
+
+  // Start the game paused so the user can change settings and start it when ready
+  noLoop()
+  initGame()
 }
 
 /* ==========================================================================
@@ -229,12 +251,12 @@ function pauseGame() {
   if (pauseStatus == false){
     noLoop()
     pauseStatus = true
-    $('#pauseBtn')[0].innerText = "play_circle_outline"
+    $('.js-pauseBtn')[0].innerText = "play_circle_outline"
   }
 
   else {
     loop()
     pauseStatus = false
-    $('#pauseBtn')[0].innerText = "pause_circle_outline"
+    $('.js-pauseBtn')[0].innerText = "pause_circle_outline"
   }
 }
