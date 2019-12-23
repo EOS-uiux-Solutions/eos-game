@@ -6,7 +6,7 @@
   z-index: 1000;
 }
 
-.portrait-screen h1 {
+.portrait-screen p {
   color: white;
-  margin: auto;
+  font-family: "Arial"
 }
