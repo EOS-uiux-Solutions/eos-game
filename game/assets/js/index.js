@@ -25,7 +25,7 @@ function preload () {
   mountain = loadImage('assets/img/world/mountain.png')
   assets = loadImage('assets/img/world/assets.png')
   objective = loadImage('assets/img/world/objective.png')
-  baseSound = loadSound('assets/sound/base.ogg')
+  baseSound = loadSound('assets/sound/base.mp3')
   jumpSound = loadSound('assets/sound/jump.ogg')
   endSound = loadSound('assets/sound/end.ogg')
 }
