@@ -1,0 +1,62 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Alfa Slab One', cursive;
+  margin: 0;
+  /* The image used */
+  background-image: url("../img/page/bg.jpg");
+  background-color: #094762;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.logo {
+  display: block;
+  width: 250px;
+  left: 50%;
+  margin: auto;
+  margin-left: -115px;
+  position: relative;
+  top: 50px;
+  z-index: 50;
+}
+
+.pause {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 10px;
+  font-size: 30px;
+
+}
+
+#game {
+  position: relative;
+  display: table;
+  margin: auto;
+}
+
+.menu {
+  background: rgba(255, 255, 255, 0.4);
+  color: red;
+  z-index: 900;
+}
+
+.centered-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

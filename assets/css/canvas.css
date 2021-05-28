@@ -1,0 +1,6 @@
+.p5Canvas {
+  border: 10px solid white;
+  border-radius: 30px;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+  z-index: 30;
+}
