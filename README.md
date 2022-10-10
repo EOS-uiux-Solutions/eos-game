@@ -66,3 +66,14 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Learn more about the EOS UX/UI Solutions
+
+- [EOS Icons](https://eos-icons.com)
+
+- [EOS User Story](https://userstory.site)
+
+- [Follow us on Twitter](https://twitter.com/eos_uxui)
+
+- [Join us on Slack](https://slack.userstory.site)
+
